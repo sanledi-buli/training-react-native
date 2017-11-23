@@ -6,17 +6,17 @@ import styles from './Button.styles';
 
 type Props = {
   title: string,
-  onPressHandler: void
+  onPressHandler: () => void
 };
 
 function Button(props: Props) {
   let { title, onPressHandler } = props;
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onClick={onPressHandler}>
+    <TouchableOpacity onPress={onPressHandler}>
+      <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 }
 

@@ -1,6 +1,6 @@
 // @flow
 
 import { AppRegistry } from 'react-native';
-import HomeScene from './src/App';
+import App from './src/App';
 
-AppRegistry.registerComponent('GithubApp', () => HomeScene);
+AppRegistry.registerComponent('GithubApp', () => App);
