@@ -4,11 +4,12 @@ import React, { Component } from 'react';
 import { View, Text, Alert } from 'react-native';
 import Contact from '../../Components/Contact/Contact.component';
 import styles from './Contact.styles';
-import ContactForm from '../../Components/Contact/ContactForm.component';
+import ContactForm from '../../Components/Contact/ContactForm.container';
 
 type Props = {
   contactList: Array<Object>,
-  contactTapHandler: (index: number) => void
+  contactTapHandler: (index: number) => void,
+  addContactHandler: (contact: Object) => void
 };
 
 class ContactScene extends Component<Props> {
@@ -16,7 +17,7 @@ class ContactScene extends Component<Props> {
     title: 'Contact'
   };
   render() {
-    let { contactList, contactTapHandler } = this.props;
+    let { contactList, contactTapHandler, addContactHandler } = this.props;
     return (
       <View style={styles.container}>
         {contactList.map((contact, index) => (
@@ -27,7 +28,7 @@ class ContactScene extends Component<Props> {
             index={index}
           />
         ))}
-        <ContactForm />
+        <ContactForm addContactHandler={addContactHandler} />
       </View>
     );
   }
