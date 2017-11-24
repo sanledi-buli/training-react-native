@@ -16,6 +16,13 @@ let reducer = (oldState, action) => {
         contactList: [...oldState.contactList, action.newContact]
       };
     }
+    case REDUCER.TYPES.DELETE_CONTACT: {
+      return {
+        contactList: oldState.contactList.filter(
+          (item, index) => index !== action.index
+        )
+      };
+    }
     default:
       return oldState;
   }

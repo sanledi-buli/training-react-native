@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import styles from './Contact.styles';
 
 type ContactDetail = {
@@ -11,11 +11,27 @@ type ContactDetail = {
 
 type Props = {
   contact: ContactDetail,
-  onPress: () => void
+  contactTapHandler: (index: number) => void,
+  index: number
 };
 
 function Contact(props: Props) {
-  let { contact, onPress } = props;
+  let { contact, contactTapHandler, index } = props;
+  let onPress = () => {
+    Alert.alert(
+      `${contact.name}`,
+      `Do you want to delete contact ${contact.phone}`,
+      [
+        {
+          text: 'Delete',
+          onPress: () => {
+            contactTapHandler(index);
+          }
+        },
+        { text: 'Dismiss' }
+      ]
+    );
+  };
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
